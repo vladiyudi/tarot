@@ -16,7 +16,7 @@ const FlippingCard = () => {
 
   useEffect(() => {
     if (Object.keys(prediction).length) {
-      console.log("PREDICTION", prediction.images[0])
+      console.log("PREDICTION", prediction)
       setIsFlipped(true);
     }
     else {

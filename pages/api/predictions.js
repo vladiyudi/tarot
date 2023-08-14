@@ -11,7 +11,8 @@ const handler = async (req, res) => {
     console.log("PROMPT", prompt.content)
 
     const imageUrls = await getImage(prompt.content)
-    res.status(200).json({ images: imageUrls, prediction: predictionText.content })
+    // res.status(200).json({ images: imageUrls, prediction: predictionText.content })
+    res.status(200).json({ prediction: predictionText.content })
 }
 
 export default handler

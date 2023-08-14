@@ -55,6 +55,7 @@ const InputWithButton = ({prediction, setPrediction}) => {
   const getPrediction = async () => {
     getRandomColor();
     const response = await axios.post('/api/predictions', {data: prompt});
+    console.log("RESPONSE", response.data)
     setPrediction(response.data);
   }
 
