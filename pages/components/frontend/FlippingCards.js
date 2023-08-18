@@ -72,13 +72,13 @@ const FlippingCard = () => {
             position: 'absolute',
           }}
         >
-          <Image
+          {Object.keys(prediction).length && <Image
             src={Object.keys(prediction).length ? prediction.images : ''}
             alt="Back"
             layout="fill"
             objectFit="cover"
             fill
-          />
+          />}
           <ShowPrediction prediction={prediction.prediction} setPrediction={setPrediction}/>
         </div>
       </div>
