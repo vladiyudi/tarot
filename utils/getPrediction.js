@@ -10,7 +10,7 @@ export default async function getPredictionText (prompt) {
     try {
     const chat_completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: `answer following question in2 sentnces as you predict future using new age jargon: ${prompt}`}],
+        messages: [{ role: "user", content: `answer following question in sentnces as you predict future using new age jargon: ${prompt}`}],
     });
 
 
@@ -33,4 +33,6 @@ export const createPrompt = async (prompt) => {
         return error
     }
 }
+
+
 

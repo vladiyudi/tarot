@@ -1,25 +1,23 @@
 import getImage from '../../utils/get_image'
-import getPredictionText, {createPrompt } from '../../utils/getPrediction'
+import getPredictionText, {createPrompt, createPrompt2 } from '../../utils/getPrediction'
 import GenerateImage from '../../utils/GetStabeleDiffusionImage'
 import fetchOpenAI from '../../utils/GetOpenAiPrediction'
 
 const handler = async (req, res) => {
 
-    const predicttion = `answer following question in2 sentnces as you predict future using new age jargon: ${req.body.data}`
+    let askAi = `answer following question in 2 sentnces as you predict future using new age jargon: ${req.body.data}`
 
-    const predictionText = await getPredictionText(req.body.data)
-    
-    const prompt = await createPrompt(predictionText.content)
-    
-    console.log("PROMPT", prompt.content)
+    let predictionLong = await fetchOpenAI(askAi)
 
-    const imageUrls = await GenerateImage(prompt.content)
+    let askForPrompt = `generate funy 1 sentence which describes following (no abstraction, just physical objects): ${predictionLong}`
 
-    // const imageUrls = await GenerateImage('futuristic women')
+    let prompt = await fetchOpenAI(askForPrompt)
+
+    const imageUrls = await GenerateImage(prompt)
 
 
-    res.status(200).json({ images: imageUrls, prediction: predictionText.content })
-    // res.status(200).json({ images: imageUrls, prediction: 'predictionText.content' })
+    res.status(200).json({ images: imageUrls, prediction: predictionLong })
+  
 
 }
 
