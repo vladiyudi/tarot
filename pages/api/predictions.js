@@ -5,21 +5,20 @@ import fetchOpenAI from '../../utils/GetOpenAiPrediction'
 
 const handler = async (req, res) => {
 
-    const prediction = `answer following question as you predict future using new age jargon: ${req.body.data}`
+    const predicttion = `answer following question in2 sentnces as you predict future using new age jargon: ${req.body.data}`
 
-    const predictionText = await fetchOpenAI(prediction)
-
-    const promptText = `generate funy 1 sentence which describes following (no abstraction, just physical objects): ${predictionText}`
+    const predictionText = await getPredictionText(req.body.data)
     
-    const prompt = await fetchOpenAI(promptText)
+    const prompt = await createPrompt(predictionText.content)
+    
+    console.log("PROMPT", prompt.content)
 
-
-    const imageUrls = await GenerateImage(prompt)
+    const imageUrls = await GenerateImage(prompt.content)
 
     // const imageUrls = await GenerateImage('futuristic women')
 
 
-    res.status(200).json({ images: imageUrls, prediction: predictionText })
+    res.status(200).json({ images: imageUrls, prediction: predictionText.content })
     // res.status(200).json({ images: imageUrls, prediction: 'predictionText.content' })
 
 }
