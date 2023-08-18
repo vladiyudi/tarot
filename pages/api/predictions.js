@@ -9,11 +9,11 @@ const handler = async (req, res) => {
 
     let predictionLong = await fetchOpenAI(askAi)
 
-    let askForPrompt = `generate funy 1 sentence which describes following (no abstraction, just physical objects): ${predictionLong}`
+    // let askForPrompt = `generate funy 1 sentence which describes following (no abstraction, just physical objects): ${predictionLong}`
 
-    let prompt = await fetchOpenAI(askForPrompt)
+    // let prompt = await fetchOpenAI(askForPrompt)
 
-    const imageUrls = await GenerateImage(prompt)
+    const imageUrls = await GenerateImage(predictionLong)
 
 
     res.status(200).json({ images: imageUrls, prediction: predictionLong })
