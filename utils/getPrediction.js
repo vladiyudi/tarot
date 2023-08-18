@@ -11,6 +11,8 @@ export default async function getPredictionText (prompt) {
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: `answer following question in2 sentnces as you predict future using new age jargon: ${prompt}`}],
     });
+
+
     return chat_completion.data.choices[0].message}
     catch (error) {
         console.log(error)
