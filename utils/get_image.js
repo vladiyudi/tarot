@@ -56,7 +56,7 @@ export const generateImage = async (prompts) => {
     try {
         const res = await axios.post("https://cloud.leonardo.ai/api/rest/v1/generations",{
             "prompt": `hyper realistic tarot card which depicts: ${prompts}`,
-            "modelId": models.dreamShaper,
+            "modelId": models.signature,
             "width": 512,
             "height": 800,
             "num_images":1,

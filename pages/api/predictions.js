@@ -1,6 +1,6 @@
 import getImage from '../../utils/get_image'
 import { getPredictionText, createPrompt } from '../../utils/getPrediction'
-
+import { generateImage } from '../components/backend/GetStabeleDiffusionImage'
 
 const handler = async (req, res) => {
 
@@ -10,9 +10,11 @@ const handler = async (req, res) => {
     
     console.log("PROMPT", prompt.content)
 
-    const imageUrls = await getImage(prompt.content)
-    // res.status(200).json({ images: imageUrls, prediction: predictionText.content })
-    res.status(200).json({ prediction: predictionText.content })
+    const imageUrls = await generateImage(prompt.content)
+
+    
+
+    res.status(200).json({ images: imageUrls, prediction: predictionText.content })
 }
 
 export default handler

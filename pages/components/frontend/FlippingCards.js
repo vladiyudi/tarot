@@ -1,4 +1,4 @@
-import oracle from '../../image/oracle.png';
+import oracle from '../../../image/oracle.png';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive'
@@ -16,7 +16,6 @@ const FlippingCard = () => {
 
   useEffect(() => {
     if (Object.keys(prediction).length) {
-      console.log("PREDICTION", prediction)
       setIsFlipped(true);
     }
     else {
@@ -74,10 +73,11 @@ const FlippingCard = () => {
           }}
         >
           <Image
-            src={Object.keys(prediction).length ? prediction.images[0] : ''}
+            src={Object.keys(prediction).length ? prediction.images : ''}
             alt="Back"
             layout="fill"
             objectFit="cover"
+            fill
           />
           <ShowPrediction prediction={prediction.prediction} setPrediction={setPrediction}/>
         </div>
