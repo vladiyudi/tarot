@@ -20,7 +20,7 @@ export default async function GenerateImage (prompt) {
 }
 const generateBody = (prompt) => {
     return JSON.stringify({
-        "key": process.env.STABLE_DIFFUSION_API_KEY,
+        "key": '3AltkMXQa7HOe0kWb0unpALf7WOAxi7ayPeMBezNSGgs2Sf1uXzQnPQCGdIo',
         "model_id": "realistic-vision-v13",
         "prompt": `old fashioned tarot card which shows${prompt}`,
         "width": "512",
